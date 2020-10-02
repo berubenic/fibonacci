@@ -1,12 +1,16 @@
 def fib(n, arr = [])
   arr.push(0, 1)
-  if n >= 2
+  if n == 0
+    []
+  elsif n == 1
+    [0]
+  elsif n >= 2
     2.upto(n) do |num|
       sum = arr[num - 2] + arr[num - 1]
       arr.push(sum)
     end
+    arr.slice(0..n - 1)
   end
-  arr.slice(0..n - 1)
 end
 
 p fib(0)
