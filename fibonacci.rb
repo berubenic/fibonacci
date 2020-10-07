@@ -1,40 +1,43 @@
-def fib(n)
-  return if n.zero?
-
-  arr = [0, 1]
-  if n <= 2
-    arr.slice(0..n - 1)
-  elsif n > 2
-    2.upto(n) do |num|
-      arr.push(arr[num - 1] + arr[num - 2])
-    end
-    arr.slice(0..n - 1)
-  end
+def fibs(num, sequence = [0, 1])
+  sequence if num <= 2
+  3.upto(num) { |n| sequence << (sequence[n - 3] + sequence[n - 2]) }
+  sequence
 end
 
-p fib(0)
-p fib(1)
-p fib(2)
-p fib(3)
-p fib(4)
-p fib(5)
-p fib(6)
-p fib(7)
-p fib(13)
+# p fibs(0)
+# p fibs(1)
+# p fibs(2)
+# p fibs(3)
+# p fibs(4)
+# p fibs(5)
+# p fibs(6)
+# p fibs(7)
+# p fibs(8)
+# p fibs(9)
+# p fibs(10)
+# p fibs(11)
+# p fibs(12)
+# p fibs(13)
 
-def fib_rec(n)
-  return [] if n.zero?
-  return [0] if n == 1
-  return [0, 1] if n == 2
+def fibs_rec(num, sequence = [0, 1])
+  return sequence if num <= 2
 
-  next_num = fib(n - 1)
-  next_num.push((next_num[-1]) + (next_num[-2]))
+  next_num = sequence[- 1] + sequence[- 2]
+  sequence << next_num
+  fibs_rec(num - 1, sequence)
 end
 
-p fib_rec(1)
-p fib_rec(2)
-p fib_rec(3)
-p fib_rec(4)
-p fib_rec(5)
-p fib_rec(6)
-p fib_rec(13)
+# p fibs_rec(0)
+# p fibs_rec(1)
+# p fibs_rec(2)
+# p fibs_rec(3)
+# p fibs_rec(4)
+# p fibs_rec(5)
+# p fibs_rec(6)
+# p fibs_rec(7)
+# p fibs_rec(8)
+# p fibs_rec(9)
+# p fibs_rec(10)
+p fibs_rec(11)
+p fibs_rec(12)
+p fibs_rec(13)
